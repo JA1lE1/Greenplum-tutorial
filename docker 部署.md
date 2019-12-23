@@ -33,6 +33,76 @@ sudo service docker start
 
 
 
+## docker-compuse方式
+
+### Docker
+
+```bash
+sudo apt-get update
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+    
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo apt-key fingerprint 0EBFCD88
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
+
+
+
+
+
+### 安装docker-compuse
+
+```bash
+sudo curl -L https://github.com/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+```
+
+
+
+
+
+### **greenplum-oss-docker**
+
+- run_ossdocker.sh
+
+  - ```bash
+    docker run -it –hostname=gpdbsne \
+    –name gpdb5oss \
+    –publish 5432:5432 \
+    –publish 88:22 \
+    –volume `pwd`:/code \
+    kochanpivotal/gpdb5oss bin/bash`
+    ```
+
+#### 注意的点
+
+- 如何保持docker在后台的运行
+
+  - 修改run_ossdocker.sh 文件
+
+    - ```
+      #加个d？
+      # 加d 后没有直接进入对应的容器 应该是在后台运行 然后需要再重新进入
+      # 当前的build_docker.sh 是退出的时候直接删除对应的容器？
+```
+      
+    - 
+
+
+
 ## further
 
 - **what is Spark**
