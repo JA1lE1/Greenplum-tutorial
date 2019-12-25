@@ -19,4 +19,9 @@ GP的部署学习记录
 
 ## win部署遭遇滑铁卢
 - 一直访问不了localhost 导致无法打开pgadmin4 无法验证
+
+### 解决
+- 当使用的docker toolbox的时候
+    - 不是localhost
+    - 是192.168.99.100
     
